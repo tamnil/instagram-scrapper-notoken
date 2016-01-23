@@ -22,8 +22,7 @@ $name="coryrichards"; //change for desired username
 $test = curl_download("https://www.instagram.com/".$name.'/');
 $pattern = '/window._sharedData.*;/';
 preg_match($pattern, $test, $matches, PREG_OFFSET_CAPTURE, 3);
-$temp = $matches[0];
-$i=substr_replace($temp[0],'',0,20);
+$i=substr_replace($matches[0][0],'',0,20);
 $i=substr_replace($i,'',strlen($i)-1,20);
 $json=json_decode($i);
 $media=$json->entry_data->ProfilePage[0]->user->media->nodes;
