@@ -1,4 +1,5 @@
 <?php
+/* by Tamnil Saito Junior - 23-jan-2016*/
 function curl_download($Url) {
 
 	$tmpfname = dirname(__FILE__) . '/cookie.txt';
@@ -16,7 +17,7 @@ function curl_download($Url) {
 	return $output;
 }
 
-$name="coryrichards";
+$name="coryrichards"; //change for desired username
 
 $test = curl_download("https://www.instagram.com/".$name.'/');
 $pattern = '/window._sharedData.*;/';
@@ -27,7 +28,7 @@ $i=substr_replace($i,'',strlen($i)-1,20);
 $json=json_decode($i);
 $media=$json->entry_data->ProfilePage[0]->user->media->nodes;
 
-//var_dump($media);
+//var_dump($media); //uncomment to get extra options in object
 foreach($media as $var){
 echo '<img src="'.$var->display_src.'" />';
 echo '<br>';
